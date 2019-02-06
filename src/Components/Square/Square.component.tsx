@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
-import styled, { css } from 'styled-components';
+import React, { Component } from "react";
+
+import styled, { css } from "styled-components";
 
 type MyProps = {
   value: number;
@@ -22,16 +23,10 @@ const SquareContainer = styled.div`
       outline: none;
     }
   `}
-`;        
-/**
- *  
- */
+`;
+
 export default class Square extends React.Component<MyProps> {
   render() {
-    return (
-      <SquareContainer>
-        {this.props.value}
-      </SquareContainer>
-    );
+    return <SquareContainer> {this.props.value}</SquareContainer>;
   }
 }

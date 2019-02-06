@@ -1,2 +1,2 @@
-import Game from './Components/Game';
+import Game from "./Components/Game";
 export default Game;

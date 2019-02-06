@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import Square from '../Square';
-import styled, {css} from 'styled-components';
-const BoardContainer = styled.div``;   
-  
+import React, { Component } from "react";
+import Square from "../Square";
+import styled, { css } from "styled-components";
+const BoardContainer = styled.div``;
+
 const BoardRow = styled.div`
   ${css`
     &:after {
@@ -10,17 +10,18 @@ const BoardRow = styled.div`
       content: "";
       display: table;
     }
-  `}`;   
+  `}
+`;
 const Status = styled.div`
   margin-bottom: 10px;
-`;   
+`;
 export default class Board extends React.Component {
-  renderSquare(i:number) {
+  renderSquare(i: number) {
     return <Square value={i} />;
   }
 
   render() {
-    const status = 'Next player: X';
+    const status = "Next player: X";
 
     return (
       <BoardContainer>

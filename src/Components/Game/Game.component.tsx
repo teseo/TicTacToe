@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import Board from '../Board';
-import styled, {createGlobalStyle} from 'styled-components';
+import React, { Component } from "react";
+import Board from "../Board";
+import styled, { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -17,16 +17,16 @@ const GlobalStyle = createGlobalStyle`
     src: url("./fonts/CenturyGothic.ttf");
     margin: 20;
   }
-`
+`;
 const GameContainer = styled.div`
   display: flex;
   flex-direction: row;
   margin: 20px;
-  `;   
-const GameBoard = styled.div``;   
+`;
+const GameBoard = styled.div``;
 const GameInfo = styled.div`
   margin-left: 20px;
- `;   
+`;
 
 export default class Game extends React.Component {
   render() {

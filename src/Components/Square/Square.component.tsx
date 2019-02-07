@@ -3,9 +3,10 @@ import React, { Component } from "react";
 import styled, { css } from "styled-components";
 
 type MyProps = {
-  value: number;
+  value: number | string;
+  onClick: () => void;
 };
-const SquareContainer = styled.div`
+const ButtonContainer = styled.button`
   background: #fff;
   border: 1px solid #999;
   float: left;
@@ -25,8 +26,10 @@ const SquareContainer = styled.div`
   `}
 `;
 
-export default class Square extends React.Component<MyProps> {
-  render() {
-    return <SquareContainer> {this.props.value}</SquareContainer>;
-  }
+export default function Square(props: MyProps) {
+  return (
+    <ButtonContainer onClick={() => props.onClick()}>
+      {props.value}
+    </ButtonContainer>
+  );
 }

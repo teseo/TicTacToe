@@ -15,9 +15,29 @@ const BoardRow = styled.div`
 const Status = styled.div`
   margin-bottom: 10px;
 `;
-export default class Board extends React.Component {
+type MyProps = {};
+type MyState = {
+  squares: string[];
+};
+export default class Board extends React.Component<MyProps, MyState> {
+  constructor(props: MyProps) {
+    super(props);
+    this.state = {
+      squares: Array(9).fill(null)
+    };
+  }
+  handleClick(i: number) {
+    const squares = this.state.squares.slice();
+    squares[i] = "X";
+    this.setState({ squares: squares });
+  }
   renderSquare(i: number) {
-    return <Square value={i} />;
+    return (
+      <Square
+        value={this.state.squares[i]}
+        onClick={() => this.handleClick(i)}
+      />
+    );
   }
 
   render() {

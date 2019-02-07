@@ -15,72 +15,27 @@ const BoardRow = styled.div`
 const Status = styled.div`
   margin-bottom: 10px;
 `;
-type MyProps = {};
-type MyState = {
+type MyProps = {
   squares: string[];
-  xIsNext: boolean;
+  status: string;
+  onClick: (i: number) => void;
 };
-export default class Board extends React.Component<MyProps, MyState> {
-  constructor(props: MyProps) {
-    super(props);
-    this.state = {
-      squares: Array(9).fill(null),
-      xIsNext: true
-    };
-  }
-  handleClick(i: number) {
-    const squares = this.state.squares.slice();
-    if (this.calculateWinner(squares) || squares[i]) {
-      return;
-    }
-    squares[i] = this.state.xIsNext ? "X" : "O";
-    this.setState({
-      squares: squares,
-      xIsNext: !this.state.xIsNext
-    });
-  }
+export type BoardType = {
+  squares: string[];
+};
+export default class Board extends React.Component<MyProps> {
   renderSquare(i: number) {
     return (
       <Square
-        value={this.state.squares[i]}
-        onClick={() => this.handleClick(i)}
+        value={this.props.squares[i]}
+        onClick={() => this.props.onClick(i)}
       />
     );
   }
-  calculateWinner(squares: string[]) {
-    const lines = [
-      [0, 1, 2],
-      [3, 4, 5],
-      [6, 7, 8],
-      [0, 3, 6],
-      [1, 4, 7],
-      [2, 5, 8],
-      [0, 4, 8],
-      [2, 4, 6]
-    ];
-    for (let i = 0; i < lines.length; i++) {
-      const [a, b, c] = lines[i];
-      if (
-        squares[a] &&
-        squares[a] === squares[b] &&
-        squares[a] === squares[c]
-      ) {
-        return squares[a];
-      }
-    }
-    return null;
-  }
   render() {
-    const winner = this.calculateWinner(this.state.squares);
-    let status;
-    if (winner) {
-      status = "Winner: " + winner;
-    } else {
-      status = "Next player: " + (this.state.xIsNext ? "X" : "O");
-    }
     return (
       <BoardContainer>
-        <Status>{status}</Status>
+        <Status>{this.props.status}</Status>
         <BoardRow>
           {this.renderSquare(0)}
           {this.renderSquare(1)}

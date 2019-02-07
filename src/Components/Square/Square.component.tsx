@@ -28,8 +28,6 @@ const ButtonContainer = styled.button`
 
 export default function Square(props: MyProps) {
   return (
-    <ButtonContainer onClick={() => props.onClick()}>
-      {props.value}
-    </ButtonContainer>
+    <ButtonContainer onClick={props.onClick}>{props.value}</ButtonContainer>
   );
 }

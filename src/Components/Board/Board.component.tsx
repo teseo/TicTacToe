@@ -12,12 +12,8 @@ const BoardRow = styled.div`
     }
   `}
 `;
-const Status = styled.div`
-  margin-bottom: 10px;
-`;
 type MyProps = {
   squares: string[];
-  status: string;
   onClick: (i: number) => void;
 };
 export type BoardType = {
@@ -35,7 +31,6 @@ export default class Board extends React.Component<MyProps> {
   render() {
     return (
       <BoardContainer>
-        <Status>{this.props.status}</Status>
         <BoardRow>
           {this.renderSquare(0)}
           {this.renderSquare(1)}
